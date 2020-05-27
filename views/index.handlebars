@@ -15,7 +15,8 @@
 <ul>
   {{#each burgers}}
   {{#if devoured}}
-  <li>{{burger_name}}</li>
+  <li>{{burger_name}} <button class="change-status" data-id="{{id}}" data-status="{{devoured}}">Make Another</button>
+  </li>
   {{/if}}
   {{/each}}
 </ul>
@@ -37,7 +38,7 @@
       let status = $(this).data("status");
 
       let newStatus = {
-        devoured: 1
+        devoured: status === 0 ? 1 : 0    // Ternary operator enables same click listener to switch devour status
       };
 
       $.ajax("/api/burgers/" + id, {
