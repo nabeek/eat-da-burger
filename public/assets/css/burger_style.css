@@ -1,0 +1,20 @@
+body {
+  background-color: #ffdb58;
+}
+
+hr {
+  background-color: transparent;
+  margin: 1rem 0;
+}
+
+.has-text-brown {
+  color: #8b5d2e;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem !important;
+}
+
+.mt-4 {
+  margin-top: 2rem !important;
+}

@@ -1,35 +1,69 @@
-<h1 class="title">Eat Da Burger!</h1>
+<h1 class="title is-1 has-text-centered has-text-danger">Eat Da Burger!</h1>
 
-<h2>Burgers to eat!</h2>
-
-<ul>
-  {{#each burgers}}
-  {{#unless devoured}}
-  <li>{{burger_name}} <button class="change-status" data-id="{{id}}" data-status="{{devoured}}">Devour</button></li>
-  {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Burgers that were devoured!</h2>
-
-<ul>
-  {{#each burgers}}
-  {{#if devoured}}
-  <li>{{burger_name}} <button class="change-status" data-id="{{id}}" data-status="{{devoured}}">Make Another</button>
-  </li>
-  {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <input type="text" id="newBurger" name="name">
+<div class="columns is-centered">
+  <div class="column is-5 has-text-right" id="eat-column">
+    <h2>Burgers to eat!</h2>
+    <hr>
+    <ul>
+      {{#each burgers}}
+      {{#unless devoured}}
+      <li class="mb-1">{{burger_name}} <button class="button is-danger is-small is-rounded change-status"
+          data-id="{{id}}" data-status="{{devoured}}">
+          <span class="icon">
+            <i class="fas fa-hamburger"></i>
+          </span></button></li>
+      {{/unless}}
+      {{/each}}
+    </ul>
   </div>
 
-  <button type="submit">Submit</button>
-</form>
+  <div class="column is-1"></div>
+
+  <div class="column is-5 has-text-left" id="eaten-column">
+    <h2>Burgers eaten!</h2>
+    <hr>
+    <ul>
+      {{#each burgers}}
+      {{#if devoured}}
+      <li class="mb-1"><button class="button is-success is-small is-rounded change-status" data-id="{{id}}"
+          data-status="{{devoured}}"><span class="icon">
+            <i class="fas fa-hamburger"></i>
+          </span></button> <span class="">{{burger_name}}</span>
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+<div class="columns is-centered mt-4">
+  <div class="column">
+    <h4 class="title is-4 has-text-centered">Add a Burger</h4>
+
+  </div>
+</div>
+
+<div class="columns is-centered has-text-centered">
+  <div class="column is-3">
+    <form class="create-burger">
+      <div class="field">
+        <p class="control">
+          <input class="input" type="text" id="newBurger" name="name">
+        </p>
+        <p class="help has-text-centered">Enter a burger you want to create, then click the burger button</p>
+      </div>
+      <div class="control create-burger has-text-centered">
+        <button class="button is-large is-rounded" type="submit">
+          <span class="icon has-text-brown is-medium">
+            <i class="fas fa-hamburger"></i>
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
 
 <script>
   $(function () {
@@ -53,7 +87,7 @@
       );
     });
 
-    $(".create-form").on("submit", function (event) {
+    $(".create-burger").on("submit", function (event) {
       event.preventDefault();
 
       let newBurger = {
@@ -72,4 +106,17 @@
       );
     });
   });
+
+  $(window).resize(function () {
+    if (window.innerWidth < 769) {
+      $("#eat-column").removeClass("has-text-right")
+      $("#eaten-column").removeClass("has-text-left");
+      $("#eaten-column, #eat-column").addClass("has-text-justified");
+    } else {
+      $("#eat-column").addClass("has-text-right")
+      $("#eaten-column").addClass("has-text-left");
+      $("#eaten-column", "#eat-column").removeClass("has-text-centered");
+    }
+  });
+
 </script>
