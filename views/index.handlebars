@@ -1,8 +1,17 @@
-<h1 class="title is-1 has-text-centered has-text-danger">Eat Da Burger!</h1>
+<div class="columns is-centered mb-4">
+  <div class="column is-half has-text-centered">
+    <img src="/assets/img/burger.png" alt="A tasty burger">
+    <h1 class="title is-1 has-text-centered has-text-danger">Eat-Da-Burger!</h1>
+    <p class="">Welcome to our burger stand. Click a red burger button to devour a burger. Click a green
+      burger button to make another. Add a new burger by clicking the brown burger button.</p>
+  </div>
+</div>
+
+
 
 <div class="columns is-centered">
   <div class="column is-5 has-text-right" id="eat-column">
-    <h2>Burgers to eat!</h2>
+    <h2 class="subtitle has-text-weight-bold">Burgers to eat!</h2>
     <hr>
     <ul>
       {{#each burgers}}
@@ -20,7 +29,7 @@
   <div class="column is-1"></div>
 
   <div class="column is-5 has-text-left" id="eaten-column">
-    <h2>Burgers eaten!</h2>
+    <h2 class="subtitle has-text-weight-bold">Burgers eaten!</h2>
     <hr>
     <ul>
       {{#each burgers}}
@@ -38,23 +47,20 @@
 
 <div class="columns is-centered mt-4">
   <div class="column">
-    <h4 class="title is-4 has-text-centered">Add a Burger</h4>
-
+    <h4 class="title is-4 has-text-centered ma">Add a Burger</h4>
+    <p class="help has-text-centered">Enter a burger you want to create</p>
   </div>
 </div>
 
 <div class="columns is-centered has-text-centered">
   <div class="column is-3">
-    <form class="create-burger">
-      <div class="field">
-        <p class="control">
-          <input class="input" type="text" id="newBurger" name="name">
-        </p>
-        <p class="help has-text-centered">Enter a burger you want to create, then click the burger button</p>
-      </div>
-      <div class="control create-burger has-text-centered">
-        <button class="button is-large is-rounded" type="submit">
-          <span class="icon has-text-brown is-medium">
+    <form class="create-burger field is-grouped">
+      <p class="control is-expanded ma">
+        <input class="input" type="text" id="newBurger" name="name">
+      </p>
+      <div class="control has-text-centered">
+        <button class="button is-brown is-large is-rounded" id="new-burger" type="submit">
+          <span class="icon is-large">
             <i class="fas fa-hamburger"></i>
           </span>
         </button>
@@ -62,8 +68,6 @@
     </form>
   </div>
 </div>
-
-
 
 <script>
   $(function () {
@@ -80,8 +84,6 @@
         data: newStatus
       }).then(
         function () {
-          console.log("changed devour to", newStatus);
-
           location.reload();
         }
       );
@@ -90,20 +92,25 @@
     $(".create-burger").on("submit", function (event) {
       event.preventDefault();
 
-      let newBurger = {
-        burger_name: $("#newBurger").val().trim(),
-        devoured: 0
-      };
+      let burgerName = $("#newBurger").val().trim()
 
-      $.ajax("/api/burgers", {
-        type: "POST",
-        data: newBurger
-      }).then(
-        function () {
-          console.log("added new burger:", newBurger)
-          location.reload();
-        }
-      );
+      if (burgerName == "") {
+        $('#new-burger').effect('shake')
+      } else {
+        let newBurger = {
+          burger_name: burgerName,
+          devoured: 0
+        };
+
+        $.ajax("/api/burgers", {
+          type: "POST",
+          data: newBurger
+        }).then(
+          function () {
+            location.reload();
+          }
+        );
+      }
     });
   });
 
@@ -111,12 +118,14 @@
     if (window.innerWidth < 769) {
       $("#eat-column").removeClass("has-text-right")
       $("#eaten-column").removeClass("has-text-left");
-      $("#eaten-column, #eat-column").addClass("has-text-justified");
+      $("#eaten-column, #eat-column").addClass("has-text-centered");
     } else {
       $("#eat-column").addClass("has-text-right")
       $("#eaten-column").addClass("has-text-left");
       $("#eaten-column", "#eat-column").removeClass("has-text-centered");
     }
   });
+
+  $("#copyright-year").text(new Date().getFullYear())
 
 </script>

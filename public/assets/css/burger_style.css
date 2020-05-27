@@ -7,14 +7,36 @@ hr {
   margin: 1rem 0;
 }
 
-.has-text-brown {
+.is-brown,
+.is-brown:hover,
+.is-brown:focus,
+.is-brown:active {
   color: #8b5d2e;
+  background-color: #ffdb58;
+  border-color: transparent;
 }
 
+.ma {
+  margin: auto !important;
+}
 .mb-1 {
   margin-bottom: 0.5rem !important;
 }
 
+.mb-4 {
+  margin-bottom: 2rem !important;
+}
+
 .mt-4 {
   margin-top: 2rem !important;
+}
+
+#footer {
+  margin: 3rem 0rem;
+}
+
+#nabeek-link:hover,
+#repo-link:hover {
+  cursor: pointer;
+  color: #3273dc;
 }
