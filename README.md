@@ -20,7 +20,7 @@ Eat-Da-Burger! is live [here](https://nabeek-eat-da-burger.herokuapp.com/).
 [Express](https://expressjs.com/)\
 [Handlebars](https://handlebarsjs.com/)\
 [MySQL](https://www.mysql.com/)\
-[Node](https://nodejs.org/en/)\
+[Node](https://nodejs.org/en/)
 
 ## Code Examples
 
