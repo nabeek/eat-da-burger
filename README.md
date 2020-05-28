@@ -8,7 +8,7 @@ This application utilizes MySQL, Node, Express, Handlebars, and an ORM. MySQL is
 
 ## Usage
 
-Eat-Da-Burger! is live [here](#).
+Eat-Da-Burger! is live [here](https://nabeek-eat-da-burger.herokuapp.com/).
 
 ## Screenshot
 
