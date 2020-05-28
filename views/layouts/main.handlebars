@@ -7,10 +7,6 @@
   <link rel="icon" type="image/png" href="/assets/img/burger 36x36.png" />
   <link rel="stylesheet" href="/assets/css/burger_style.css" type="text/css" />
   <title>Eat Da Burger!</title>
-  <script src="https://kit.fontawesome.com/bc86d87b8d.js" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -39,6 +35,14 @@
     </div>
   </section>
 
+  <script src="https://kit.fontawesome.com/bc86d87b8d.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
+  <script>
+    $("#copyright-year").text(moment().format("YYYY"))
+  </script>
 </body>
 
 </html>
